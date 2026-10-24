@@ -1,0 +1,18 @@
+/* ═══════════════════════════════════════════════════════════════════
+   ÉCRAN — RÉGLAGES (tout est préfixé #etape-reglages, règle ④)
+   ═══════════════════════════════════════════════════════════════════ */
+#etape-reglages .reglages-page{max-width:680px;margin:0 auto;padding:44px 0 20px}
+#etape-reglages h1{font-size:34px;font-weight:600;margin:0 0 6px;letter-spacing:-.015em}
+#etape-reglages .intro{color:var(--gris-texte);margin:0 0 26px}
+#etape-reglages .carte-reglage{border:1px solid var(--gris-bordure);border-radius:14px;padding:22px 24px;margin-bottom:16px}
+#etape-reglages .carte-reglage h2{font-size:19px;font-weight:600;margin:0 0 6px}
+#etape-reglages .carte-reglage p{font-size:14px;color:var(--gris-texte);margin:0 0 12px}
+#etape-reglages .etat-sauvegarde{color:var(--noir)}
+#etape-reglages .etat-sauvegarde.alerte{color:#b3261e;font-weight:600}
+#etape-reglages .actions{display:flex;gap:10px;flex-wrap:wrap}
+#etape-reglages .message{margin:12px 0 0;font-size:13px;color:var(--noir)}
+#etape-reglages .message.erreur{color:#b3261e;font-weight:600}
+
+#etape-reglages .interrupteur{display:flex;gap:12px;align-items:flex-start;cursor:pointer;font-size:14px;color:var(--noir)}
+#etape-reglages .interrupteur input{margin-top:4px;width:18px;height:18px;flex:0 0 18px;accent-color:var(--noir)}
+#etape-reglages .interrupteur small{color:var(--gris-texte);font-size:12.5px}

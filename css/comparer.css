@@ -1,0 +1,57 @@
+/* ═══════════════════════════════════════════════════════════════
+   ÉCRAN — COMPARER
+   ⚠️ Tout est préfixé #etape-comparer (règle ④).
+   Reprend la maquette maquettes/comparer.html (tableau compact).
+   ═══════════════════════════════════════════════════════════════ */
+#etape-comparer{padding-top:34px;--alerte:#b3261e;--bon:#3f8a5a}
+#etape-comparer .comparer-page{margin:0 auto}
+#etape-comparer h1{font-size:30px;font-weight:600;margin:0 0 4px;letter-spacing:-.015em}
+#etape-comparer .intro{color:var(--gris-texte);margin:0 0 18px}
+#etape-comparer .accueil{border:1.5px dashed var(--gris-bordure2);border-radius:16px;text-align:center;padding:34px 20px;margin:18px 0}
+#etape-comparer .accueil h2{font-size:24px;margin:0 0 6px;font-weight:600}
+#etape-comparer .accueil p{color:var(--gris-texte);margin:0 auto 18px;max-width:520px}
+
+#etape-comparer .filtres{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 10px}
+#etape-comparer .etiq{font-size:12px;color:var(--gris-texte2);min-width:84px}
+#etape-comparer .rang{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+#etape-comparer .pill{font:inherit;font-size:12.5px;padding:5px 13px;border-radius:980px;border:1px solid var(--gris-bordure);background:#fff;color:var(--noir);cursor:pointer;width:auto}
+#etape-comparer .pill:hover{background:var(--gris-doux)}
+#etape-comparer .pill.on{background:var(--noir);border-color:var(--noir);color:#fff}
+#etape-comparer .pill:disabled{opacity:.35;cursor:default;pointer-events:none}
+#etape-comparer .pill.mois{padding:4px 10px;font-size:12px}
+#etape-comparer .aide-c,#etape-comparer .vide-c{font-size:12.5px;color:var(--gris-texte);background:var(--gris-doux);border:1px dashed var(--gris-bordure2);border-radius:12px;padding:12px 16px;margin:6px 0 0}
+#etape-comparer .vide-c{margin-top:14px}
+#etape-comparer .alerte-c{font-size:12.5px;color:#8a5a00;background:#fff7e6;border-radius:10px;padding:8px 12px;margin:0 0 12px}
+
+#etape-comparer .resume{border:1px solid var(--gris-bordure);border-radius:14px;padding:16px 20px;margin:16px 0;font-size:14px}
+#etape-comparer .resume b{font-weight:600}
+#etape-comparer .resume .sous-r{font-size:12.5px;color:var(--gris-texte);margin-top:4px}
+#etape-comparer .outils{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin:12px 0 8px;font-size:13px}
+#etape-comparer .outils label{display:flex;gap:6px;align-items:center;cursor:pointer}
+#etape-comparer .outils input{width:auto;accent-color:var(--noir)}
+
+#etape-comparer .tableau{border:1px solid var(--gris-bordure);border-radius:14px;overflow-x:auto}
+#etape-comparer table.cmp{border-collapse:collapse;width:100%;table-layout:fixed}
+#etape-comparer table.cmp th,#etape-comparer table.cmp td{padding:10px;text-align:right;border-bottom:1px solid var(--gris-bordure);vertical-align:top;font-variant-numeric:tabular-nums}
+#etape-comparer table.cmp th:first-child,#etape-comparer table.cmp td:first-child{text-align:left;width:160px;position:sticky;left:0;z-index:1;background:#fff;white-space:normal}
+#etape-comparer table.cmp th{font-size:12px;font-weight:600;color:var(--noir);background:var(--gris-doux);white-space:nowrap}
+#etape-comparer table.cmp th:first-child{background:var(--gris-doux);z-index:2}
+#etape-comparer table.cmp th.estref{background:#f0f0f3}
+#etape-comparer table.cmp th .ref{display:flex;gap:4px;justify-content:flex-end;align-items:center;font-size:11px;font-weight:500;color:var(--gris-texte);margin-top:2px;cursor:pointer}
+#etape-comparer table.cmp th .ref input{width:auto;margin:0;accent-color:var(--noir)}
+#etape-comparer table.cmp tr:last-child td{border-bottom:none}
+#etape-comparer table.cmp tr.cat td{font-weight:600;cursor:pointer}
+#etape-comparer table.cmp tr.cat:hover td{background:var(--gris-doux)}
+#etape-comparer table.cmp tr.sous td{font-size:13px;color:var(--gris-texte);background:var(--gris-doux)}
+#etape-comparer table.cmp tr.sous td:first-child{padding-left:26px}
+#etape-comparer table.cmp tr.total td{background:var(--gris-nav);font-weight:600}
+#etape-comparer table.cmp td.ref{background:#fafafc}
+#etape-comparer .montant{border-bottom:1px dotted var(--gris-bordure2);cursor:pointer;color:inherit;text-decoration:none}
+#etape-comparer .ec{display:block;font-size:11px;white-space:nowrap;font-weight:500;color:var(--gris-texte2)}
+#etape-comparer .ec.plus{color:var(--alerte)}
+#etape-comparer .ec.moins{color:var(--bon)}
+#etape-comparer .ec.neutre{color:var(--gris-texte)}
+#etape-comparer .fl{display:inline-block;width:14px;color:var(--gris-texte2);font-size:10px}
+#etape-comparer .point{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:500;padding:3px 11px 3px 9px;border-radius:980px;background:#fff;border:1px solid var(--gris-bordure2)}
+#etape-comparer .point::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--c)}
+#etape-comparer .avert{font-size:12px;color:var(--gris-texte2);margin:14px 0 0}

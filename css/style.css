@@ -1,0 +1,166 @@
+/* ═══════════════════════════════════════════════════════════════════
+   STYLE DE BASE — commun à tous les écrans (voir CHARTE.md).
+   Ces règles définissent le "système" (nav, boutons, cartes, champs).
+   ⚠️ Le style PROPRE à un écran ne va pas ici : il va dans un fichier
+   séparé, préfixé par l'identifiant de l'écran (ex. #etape-personnes).
+   ═══════════════════════════════════════════════════════════════════ */
+:root{
+  --blanc:#ffffff;
+  --gris-nav:#f5f5f7;
+  --gris-doux:#fafafa;
+  --gris-bordure:#e8e8ed;
+  --gris-bordure2:#d2d2d7;
+  --noir:#1d1d1f;
+  --noir2:#333336;
+  --gris-texte:rgba(0,0,0,.56);
+  --gris-texte2:rgba(0,0,0,.36);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font:14px/1.47059 -apple-system,BlinkMacSystemFont,"SF Pro Text",
+    "Helvetica Neue",Helvetica,Arial,sans-serif;
+  background:var(--blanc);color:var(--noir);padding-bottom:80px;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ── Navigation ────────────────────────────────────────────────────── */
+header{
+  background:rgba(245,245,247,.8);
+  backdrop-filter:saturate(180%) blur(20px);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:1px solid var(--gris-bordure);
+  padding:0 22px;position:sticky;top:0;z-index:10;
+}
+.nav{display:flex;align-items:center;gap:26px;height:48px;width:100%}
+.nav .logo{font-size:15px;font-weight:600;letter-spacing:-.01em}
+.nav .menu{display:flex;gap:22px;flex:1}
+.nav .menu a{color:var(--noir2);text-decoration:none;font-size:12px;
+  opacity:.8}
+.nav .menu a.actif{opacity:1;font-weight:600}
+.nav .reglages{color:var(--noir2);text-decoration:none;font-size:12px;opacity:.8}
+.nav .reglages.actif{opacity:1;font-weight:600}
+.nav .cta{background:var(--noir);color:#fff;font-size:12px;
+  padding:6px 14px;border-radius:980px;text-decoration:none}
+main{max-width:980px;margin:0 auto;padding:0 22px}
+
+.tete{padding:52px 0 30px;text-align:center}
+.tete h1{font-size:40px;line-height:1.1;font-weight:600;margin:0 0 10px;
+  letter-spacing:-.015em}
+.tete .st{font-size:17px;color:var(--gris-texte);margin:0;max-width:580px;
+  margin-inline:auto;line-height:1.4}
+
+/* ── Progression (les 4 étapes du paramétrage) ───────────────────── */
+.prog{display:flex;justify-content:center;gap:34px;padding:0 0 40px;
+  flex-wrap:wrap}
+.prog .e{display:flex;align-items:center;gap:9px;font-size:13px;
+  color:var(--gris-texte2);cursor:pointer}
+.prog .e:hover{color:var(--noir)}
+.prog .e .n{width:24px;height:24px;border-radius:50%;display:flex;
+  align-items:center;justify-content:center;font-size:11.5px;
+  font-weight:600;border:1.5px solid var(--gris-bordure2);
+  color:var(--gris-texte2);background:#fff}
+.prog .e.cour{color:var(--noir);font-weight:600}
+.prog .e.cour .n{background:var(--noir);border-color:var(--noir);color:#fff}
+.prog .e.fait .n{background:var(--noir);border-color:var(--noir);color:#fff}
+
+/* ── Sections d'étape ─────────────────────────────────────────────── */
+.etape{margin-bottom:40px}
+.etape .num{font-size:12px;font-weight:600;color:var(--gris-texte2);
+  text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.etape h2{font-size:24px;font-weight:600;margin:0 0 6px;letter-spacing:-.01em}
+.etape .desc{font-size:14px;color:var(--gris-texte);margin:0 0 22px}
+
+/* ── Champ ─────────────────────────────────────────────────────────── */
+.ch{margin-bottom:20px}
+.lb{font-size:12.5px;font-weight:600;color:var(--noir2);margin-bottom:7px;
+  display:flex;align-items:center;gap:7px}
+.lb .fa{font-weight:400;color:var(--gris-texte2);font-size:11.5px}
+input[type=text],input[type=number],select{
+  width:100%;padding:12px 14px;border:1px solid var(--gris-bordure);
+  border-radius:10px;font:inherit;font-size:14px;background:#fff;
+  color:var(--noir);transition:.18s}
+input:focus,select:focus{outline:none;border-color:var(--noir);
+  box-shadow:0 0 0 3px rgba(0,0,0,.06)}
+input::placeholder{color:var(--gris-texte2)}
+.aide{font-size:12px;color:var(--gris-texte2);margin-top:6px}
+
+/* ── Choix (segments) ─────────────────────────────────────────────── */
+.sg{display:flex;gap:8px;flex-wrap:wrap}
+.sg .o{padding:10px 16px;border:1.5px solid var(--gris-bordure);
+  border-radius:10px;background:#fff;cursor:pointer;font-size:13.5px;
+  color:var(--noir2);transition:.16s;display:inline-flex;align-items:center;
+  gap:7px;font:inherit}
+.sg .o:hover{border-color:var(--gris-bordure2);background:var(--gris-doux)}
+.sg .o.on{border-color:var(--noir);border-width:1.5px;background:var(--noir);
+  color:#fff;font-weight:500}
+.sg .o.on::before{content:"✓";font-size:11px;font-weight:700}
+.sg.pile{flex-direction:column;align-items:stretch}
+.sg.pile .o{justify-content:flex-start;text-align:left}
+
+.l2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.l3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+@media (max-width:640px){ .l2,.l3{grid-template-columns:1fr} }
+
+/* ── Cases à cocher avec description ──────────────────────────────── */
+.cs{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}
+@media (max-width:640px){ .cs{grid-template-columns:1fr} }
+.cse{border:1.5px solid var(--gris-bordure);border-radius:12px;
+  padding:14px 16px;cursor:pointer;transition:.16s;display:flex;gap:12px;
+  align-items:flex-start;background:#fff}
+.cse:hover{border-color:var(--gris-bordure2);background:var(--gris-doux)}
+.cse.on{border-color:var(--noir);background:var(--gris-doux)}
+.cse .b{width:19px;height:19px;border-radius:5px;
+  border:1.5px solid var(--gris-bordure2);flex:0 0 19px;margin-top:1px;
+  position:relative;background:#fff}
+.cse.on .b{background:var(--noir);border-color:var(--noir)}
+.cse.on .b::after{content:"";position:absolute;left:6px;top:2px;width:4px;
+  height:9px;border:solid #fff;border-width:0 1.8px 1.8px 0;
+  transform:rotate(43deg)}
+.cse .tx b{display:block;font-size:13.5px;font-weight:600;margin-bottom:2px}
+.cse .tx span{font-size:12px;color:var(--gris-texte);line-height:1.35}
+
+/* ── Bloc (personne / compte) ─────────────────────────────────────── */
+.bloc{border:1px solid var(--gris-bordure);border-radius:14px;
+  padding:22px 22px 6px;margin-bottom:16px;background:#fff;position:relative}
+.bloc .tt{font-size:13px;font-weight:600;color:var(--noir2);
+  margin-bottom:20px;display:flex;align-items:center;gap:9px}
+.bloc .tt .pt{width:22px;height:22px;border-radius:50%;
+  background:var(--gris-nav);display:flex;align-items:center;
+  justify-content:center;font-size:11.5px;font-weight:600;color:var(--noir)}
+.bloc .x{position:absolute;top:18px;right:20px;border:none;background:none;
+  color:var(--gris-texte2);cursor:pointer;font-size:17px;line-height:1}
+.bloc .x:hover{color:var(--noir)}
+
+/* ── Bouton « ajouter » ───────────────────────────────────────────── */
+.aj{width:100%;padding:13px;border:1.5px dashed var(--gris-bordure2);
+  border-radius:12px;background:#fff;color:var(--noir2);font:inherit;
+  font-size:14px;font-weight:500;cursor:pointer;transition:.18s}
+.aj:hover{background:var(--gris-doux);border-color:var(--gris-texte2)}
+
+/* ── Pied de page (navigation entre étapes) ───────────────────────── */
+.bas{display:flex;justify-content:space-between;align-items:center;
+  margin-top:40px;padding-top:26px;border-top:1px solid var(--gris-bordure)}
+.bt{font-size:14px;padding:11px 22px;border-radius:980px;border:none;
+  cursor:pointer;font-family:inherit;transition:.18s}
+.bt:disabled{opacity:.35;cursor:default;pointer-events:none}
+.bt.p{background:var(--noir);color:#fff}
+.bt.p:hover{background:#000}
+.bt.s{background:var(--gris-nav);color:var(--noir)}
+.bt.s:hover{background:#ebebed}
+.bt.lien{background:none;color:var(--noir2);text-decoration:underline;
+  padding:11px 6px;opacity:.7}
+.bt.lien:hover{opacity:1}
+.compte{font-size:12.5px;color:var(--gris-texte)}
+
+/* Les blocs masqués par app.js restent masqués même s'ils ont un display défini plus haut. */
+.tete[hidden],.prog[hidden],.bas[hidden]{display:none}
+
+/* ── Taux de change (étape 2) ──────────────────────────────────────── */
+#etape-comptes .taux{margin-top:18px}
+#etape-comptes .ligne-taux{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:10px 0;font-size:14px}
+#etape-comptes .ligne-taux input[type=text]{width:90px}
+#etape-comptes .ligne-taux select{width:auto}
+#etape-comptes .ligne-taux input[type=date]{width:auto}
+#etape-comptes .mini-x{border:none;background:none;cursor:pointer;font-size:14px;color:var(--gris-texte);padding:4px}
+#etape-comptes .mini-x:hover{color:var(--noir)}

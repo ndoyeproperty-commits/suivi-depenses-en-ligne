@@ -1,0 +1,164 @@
+/* ═══════════════════════════════════════════════════════════════════
+   ÉCRAN — OPÉRATIONS (tout est préfixé #etape-operations, règle ④)
+   Reprend la maquette maquettes/operations.html.
+   ═══════════════════════════════════════════════════════════════════ */
+#etape-operations{
+  --alerte:#b3261e;--bon:#3f8a5a;
+}
+#etape-operations .ops-page{padding:26px 0 40px}
+#etape-operations h1{font-size:30px;font-weight:600;margin:0 0 4px;letter-spacing:-.015em}
+#etape-operations .intro{color:var(--gris-texte);margin:0 0 18px;font-size:14px}
+#etape-operations .groupe{display:flex;gap:6px;flex-wrap:wrap;align-items:center;justify-content:center}
+#etape-operations .pill{font:inherit;font-size:12.5px;padding:4px 11px;border-radius:980px;
+  border:1px solid var(--gris-bordure);background:#fff;color:var(--noir);cursor:pointer}
+#etape-operations .pill:hover{border-color:var(--gris-bordure2);background:var(--gris-doux)}
+#etape-operations .pill.on{background:var(--noir);border-color:var(--noir);color:#fff}
+#etape-operations .pill:disabled{opacity:.35;cursor:default;pointer-events:none}
+#etape-operations .filtres-ops{display:flex;flex-direction:column;gap:6px;align-items:center;margin-bottom:18px}
+
+#etape-operations .outils{border:1px solid var(--gris-bordure);border-radius:14px;padding:14px 16px;margin-bottom:12px}
+#etape-operations .recherche{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+#etape-operations .recherche input{flex:1;min-width:220px;padding:9px 14px;border:1px solid var(--gris-bordure);
+  border-radius:980px;font:inherit;font-size:14px}
+#etape-operations .recherche input:focus{outline:none;border-color:var(--noir);box-shadow:0 0 0 3px rgba(0,0,0,.06)}
+#etape-operations select.sel{font:inherit;font-size:12.5px;padding:7px 10px;border:1px solid var(--gris-bordure);
+  border-radius:980px;background:#fff;color:var(--noir)}
+#etape-operations .puces{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+#etape-operations .puce-f{font:inherit;font-size:12.5px;padding:5px 12px;border-radius:980px;
+  border:1px solid var(--gris-bordure);background:#fff;cursor:pointer;display:inline-flex;gap:6px;align-items:center;color:var(--noir)}
+#etape-operations .puce-f b{font-weight:600}
+#etape-operations .puce-f.on{background:var(--noir);color:#fff;border-color:var(--noir)}
+#etape-operations .puce-f.alerte b{color:var(--alerte)}
+#etape-operations .puce-f.on.alerte b{color:#fff}
+#etape-operations .resume{display:flex;gap:6px 22px;flex-wrap:wrap;align-items:baseline;font-size:13px;
+  color:var(--gris-texte);margin:0 2px 10px}
+#etape-operations .resume b{color:var(--noir);font-variant-numeric:tabular-nums}
+#etape-operations .resume .eff{margin-left:auto;font-size:12.5px;border:none;background:none;
+  text-decoration:underline;cursor:pointer;color:var(--noir2);font-family:inherit}
+
+#etape-operations .liste{border:1px solid var(--gris-bordure);border-radius:14px;overflow:hidden}
+#etape-operations .ligne{display:grid;grid-template-columns:28px 58px minmax(0,1fr) 126px 196px 108px 62px;
+  gap:10px;align-items:center;padding:11px 16px;border-top:1px solid var(--gris-bordure)}
+#etape-operations .liste>.ligne:first-child{border-top:none}
+#etape-operations .ligne.tete{background:var(--gris-doux);font-size:11px;font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--gris-texte2);padding:9px 16px}
+#etape-operations .ligne .d{text-align:right;font-variant-numeric:tabular-nums}
+#etape-operations .ligne .date{color:var(--gris-texte);font-size:13px;font-variant-numeric:tabular-nums}
+#etape-operations .lib-brut{font-size:13.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer}
+#etape-operations .lib-sous{font-size:11.5px;color:var(--gris-texte2);margin-top:1px;overflow:hidden;
+  text-overflow:ellipsis;white-space:nowrap}
+#etape-operations .montant{font-weight:600;font-size:14px;font-variant-numeric:tabular-nums}
+#etape-operations .montant.entree{color:var(--bon)}
+#etape-operations .manquant{color:var(--alerte);font-weight:600}
+#etape-operations .actions{display:flex;gap:4px;justify-content:flex-end}
+#etape-operations .ico{border:none;background:none;cursor:pointer;font-size:14px;color:var(--gris-texte2);
+  padding:4px 6px;border-radius:8px}
+#etape-operations .ico:hover{background:var(--gris-nav);color:var(--noir)}
+#etape-operations .ico.valider{color:var(--noir);font-weight:700}
+#etape-operations .ico.valider:hover{background:var(--noir);color:#fff}
+
+#etape-operations .cat{position:relative;display:inline-flex;align-items:center;max-width:100%}
+#etape-operations .cat select{appearance:none;-webkit-appearance:none;font:inherit;font-size:12.5px;font-weight:600;
+  border-radius:980px;padding:5px 26px 5px 12px;max-width:100%;border:1.5px solid var(--c);color:var(--c);
+  background:#fff;cursor:pointer;text-overflow:ellipsis}
+#etape-operations .cat::after{content:"▾";position:absolute;right:10px;font-size:10px;pointer-events:none;color:var(--c)}
+#etape-operations .cat.ok select{background:var(--c);color:#fff}
+#etape-operations .cat.ok::after{color:#fff}
+#etape-operations .cat.suggeree select{border-style:dashed;background:#fff;color:var(--c)}
+#etape-operations .cat.optionnelle select{border-style:dashed;font-weight:500;opacity:.9}
+#etape-operations .cat.vide{--c:#8a8a90}
+#etape-operations .cat.vide select{border-style:dashed;font-weight:500}
+#etape-operations .etat{font-size:11px;margin-left:8px;color:var(--gris-texte2);white-space:nowrap}
+#etape-operations .badge-main{display:inline-block;font-size:10.5px;border:1px solid var(--gris-bordure2);
+  border-radius:980px;padding:0 7px;margin-left:6px;color:var(--gris-texte);vertical-align:1px}
+#etape-operations .ligne.ignoree .lib-brut,#etape-operations .ligne.ignoree .montant{color:var(--gris-texte2);text-decoration:line-through}
+#etape-operations .ligne.ignoree .lib-sous::after{content:" · ignorée (ne compte pas)"}
+#etape-operations .ligne.sel{background:#f7f7f9}
+#etape-operations .ligne.touchee{box-shadow:inset 3px 0 0 var(--noir)}
+
+#etape-operations .detail{padding:12px 16px 16px 100px;background:var(--gris-doux);border-top:1px solid var(--gris-bordure);
+  font-size:12.5px;color:var(--gris-texte)}
+#etape-operations .detail p{margin:8px 0 0}
+#etape-operations .detail code{display:block;background:#fff;border:1px solid var(--gris-bordure);border-radius:10px;
+  padding:8px 12px;margin:6px 0 10px;color:var(--noir);font-size:12.5px;word-break:break-all;font-family:inherit}
+#etape-operations .detail .liens{display:flex;gap:14px;flex-wrap:wrap}
+#etape-operations .detail .liens button,#etape-operations .lien-ops{font:inherit;font-size:12.5px;border:none;background:none;
+  text-decoration:underline;cursor:pointer;color:var(--noir2);padding:0}
+#etape-operations .vide-liste{padding:40px 20px;text-align:center;color:var(--gris-texte)}
+#etape-operations .plus{display:block;margin:14px auto 0;font:inherit;font-size:13px;border:1px solid var(--gris-bordure);
+  background:#fff;border-radius:980px;padding:8px 20px;cursor:pointer}
+
+#etape-operations .haut-liste{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+#etape-operations .gchips{display:flex;gap:8px;flex-wrap:wrap}
+#etape-operations .gchip{font-size:12.5px;border:1px solid var(--gris-bordure);border-radius:980px;padding:3px 12px;
+  display:inline-flex;gap:7px;align-items:center}
+#etape-operations .gchip i{width:8px;height:8px;border-radius:50%;background:var(--c);display:inline-block}
+#etape-operations .gchip b{font-variant-numeric:tabular-nums;font-weight:600}
+#etape-operations .ajout{border:1px solid var(--gris-bordure);border-radius:14px;padding:16px;margin-bottom:12px;background:var(--gris-doux)}
+#etape-operations .ajout h3{margin:0 0 10px;font-size:15px}
+#etape-operations .ajout p{margin:8px 0 0;font-size:12.5px;color:var(--gris-texte)}
+#etape-operations .champs{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}
+#etape-operations .champs label{font-size:11.5px;color:var(--gris-texte2);display:flex;flex-direction:column;gap:3px}
+#etape-operations .champs input,#etape-operations .champs select{font:inherit;font-size:13.5px;padding:7px 10px;
+  border:1px solid var(--gris-bordure);border-radius:10px;background:#fff;color:var(--noir)}
+#etape-operations .champs input.large{min-width:230px}
+#etape-operations .bt.danger{color:var(--alerte)}
+
+#etape-operations .legende-p{font-size:12px;color:var(--gris-texte);display:flex;gap:16px;flex-wrap:wrap;margin:10px 2px 0}
+#etape-operations .legende-p span{display:inline-flex;gap:6px;align-items:center}
+#etape-operations .legende-p i{width:22px;height:12px;border-radius:980px;border:1.5px solid #c4574c;display:inline-block}
+#etape-operations .legende-p i.plein{background:#c4574c}
+#etape-operations .legende-p i.pointille{border-style:dashed}
+#etape-operations .legende-p i.gris{border-color:#8a8a90}
+#etape-operations .note-bas{font-size:12px;color:var(--gris-texte2);text-align:center;margin-top:26px}
+
+#etape-operations .barre-bas{position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:30;background:var(--noir);
+  color:#fff;border-radius:16px;padding:11px 14px 11px 18px;display:none;gap:12px;align-items:center;flex-wrap:wrap;
+  box-shadow:0 8px 30px rgba(0,0,0,.25);max-width:calc(100vw - 24px)}
+#etape-operations .barre-bas.visible{display:flex}
+#etape-operations .barre-bas select{font:inherit;font-size:12.5px;padding:6px 10px;border-radius:980px;border:none;background:#fff;color:var(--noir)}
+#etape-operations .barre-bas button{font:inherit;font-size:12.5px;border:1px solid rgba(255,255,255,.35);background:none;
+  color:#fff;border-radius:980px;padding:6px 14px;cursor:pointer}
+#etape-operations .barre-bas button.p{background:#fff;color:var(--noir);border-color:#fff}
+#etape-operations .toast{position:fixed;left:18px;bottom:18px;z-index:40;background:var(--noir);color:#fff;border-radius:14px;
+  padding:10px 12px 10px 16px;display:none;gap:12px;align-items:center;font-size:13px;
+  box-shadow:0 8px 30px rgba(0,0,0,.25);max-width:calc(100vw - 36px)}
+#etape-operations .toast.visible{display:flex}
+#etape-operations .toast button{font:inherit;font-size:12.5px;border:1px solid rgba(255,255,255,.4);background:none;
+  color:#fff;border-radius:980px;padding:4px 12px;cursor:pointer;white-space:nowrap}
+
+@media (max-width:860px){
+  #etape-operations .ligne{grid-template-columns:26px minmax(0,1fr) 100px;grid-template-areas:"c l m" ". g a" ". k k"}
+  #etape-operations .ligne.tete{display:none}
+  #etape-operations .ligne .date{display:none}
+  #etape-operations .ligne>:nth-child(1){grid-area:c}
+  #etape-operations .ligne>:nth-child(3){grid-area:l}
+  #etape-operations .ligne>:nth-child(4){grid-area:g}
+  #etape-operations .ligne>:nth-child(5){grid-area:k}
+  #etape-operations .ligne>:nth-child(6){grid-area:m}
+  #etape-operations .ligne>:nth-child(7){grid-area:a}
+  #etape-operations .detail{padding-left:16px}
+}
+
+/* Les champs de cet écran gardent leur taille naturelle : sans cela, la règle générale
+   « input, select : 100 % de large » (faite pour le paramétrage) les étirerait. */
+#etape-operations select,
+#etape-operations input[type=text],
+#etape-operations input[type=search],
+#etape-operations input[type=number]{width:auto;transition:none}
+#etape-operations .recherche input{flex:1;width:auto;min-width:220px}
+#etape-operations .cat select{width:auto}
+
+/* Combinaison A : la catégorie est une pastille pleine (à sa couleur) ; la sous-catégorie une pastille
+   blanche avec un point de la couleur de la catégorie. */
+#etape-operations .cat.sous-point{--c:#8a8a90}
+#etape-operations .cat.sous-point select{border:1px solid var(--gris-bordure2);background:#fff;color:var(--noir);
+  font-weight:500;padding-left:28px}
+#etape-operations .cat.sous-point::before{content:"";position:absolute;left:12px;width:9px;height:9px;border-radius:50%;
+  background:var(--c);pointer-events:none;z-index:1}
+#etape-operations .cat.sous-point::after{color:var(--gris-texte2)}
+#etape-operations .cat.sous-point.suggeree select{border-style:dashed}
+#etape-operations .cat.sous-point.optionnelle select{border-style:dashed;color:var(--gris-texte);opacity:1}
+#etape-operations .cat.sous-point.optionnelle::before{background:#8a8a90}
+#etape-operations .cat.sous-point.vide select{border-style:dashed;color:var(--gris-texte);border-color:#8a8a90}
+#etape-operations .cat.sous-point.vide::before{background:transparent;border:1.5px solid #8a8a90}

@@ -1,0 +1,183 @@
+/* ═══════════════════════════════════════════════════════════════════
+   ÉCRAN — TABLEAU DE BORD (et pages « bientôt »)
+   ⚠️ Tout est préfixé #etape-tableau / #etape-bientot (règle ④).
+   Reprend la maquette maquettes/tableau-de-bord.html.
+   ═══════════════════════════════════════════════════════════════════ */
+
+#etape-tableau{padding-top:34px}
+
+#etape-tableau .accueil{border:1.5px dashed var(--gris-bordure2);border-radius:16px;
+  text-align:center;padding:34px 20px;margin:0 0 18px}
+#etape-tableau .accueil h2{font-size:24px;margin:0 0 6px;font-weight:600}
+#etape-tableau .accueil p{color:var(--gris-texte);margin:0 auto 18px;max-width:520px}
+#etape-tableau .lien-discret{margin-top:12px;border:none;background:none;
+  font:inherit;font-size:13px;color:var(--noir2);text-decoration:underline;cursor:pointer}
+
+#etape-tableau .tuiles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 18px}
+@media (max-width:900px){#etape-tableau .tuiles{grid-template-columns:repeat(2,1fr)}}
+#etape-tableau .tuile{border:1px solid var(--gris-bordure);border-radius:14px;
+  padding:16px 16px 14px;min-height:128px}
+#etape-tableau .tuile .lib{font-size:11.5px;font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--gris-texte2)}
+#etape-tableau .tuile .val{font-size:28px;font-weight:600;letter-spacing:-.01em;
+  margin:8px 0 4px;color:var(--noir);font-variant-numeric:tabular-nums}
+#etape-tableau .tuile .val.vide{color:var(--gris-bordure2)}
+#etape-tableau .tuile .sous{font-size:12px;color:var(--gris-texte);line-height:1.35}
+
+#etape-bientot{padding-top:60px;text-align:center}
+#etape-bientot h2{font-size:28px;font-weight:600;margin:0 0 8px}
+#etape-bientot p{color:var(--gris-texte);margin:0 auto 20px;max-width:480px}
+
+/* ── Étape 2 : filtres, fiabilité, tuiles, barre ─────────────────────── */
+#etape-tableau{
+  --besoins:#c4574c;--envies:#e0a04a;--epargne:#5f7fae;--frais:#8a7060;--revenus:#4a8560;--neutre:#8e9aa6;--reste:#d9d9de;
+  --alerte:#b3261e;--bon:#3f8a5a;
+}
+#etape-tableau .filtres{display:flex;flex-direction:column;gap:6px;align-items:center;margin:0 0 6px}
+#etape-tableau .groupe{display:flex;gap:6px;flex-wrap:wrap;align-items:center;justify-content:center}
+#etape-tableau .pill{font:inherit;font-size:12.5px;padding:4px 11px;border-radius:980px;
+  border:1px solid var(--gris-bordure);background:#fff;color:var(--noir);cursor:pointer}
+#etape-tableau .pill:hover{border-color:var(--gris-bordure2);background:var(--gris-doux)}
+#etape-tableau .pill.on{background:var(--noir);border-color:var(--noir);color:#fff}
+#etape-tableau .pill:disabled{opacity:.35;cursor:default;pointer-events:none}
+
+#etape-tableau .fiabilite{display:flex;gap:10px 18px;flex-wrap:wrap;align-items:center;
+  padding:14px 0 6px;font-size:12.5px;color:var(--gris-texte)}
+#etape-tableau .fiabilite .droite{margin-left:auto}
+#etape-tableau .jauge{display:inline-flex;align-items:center;gap:10px}
+#etape-tableau .jauge .rail{width:120px;height:6px;border-radius:3px;background:var(--gris-nav);
+  overflow:hidden;display:inline-block}
+#etape-tableau .jauge .rail i{display:block;height:100%;background:var(--noir)}
+#etape-tableau .bouton-mini{font-size:12px;border:1px solid var(--gris-bordure);background:#fff;
+  border-radius:980px;padding:3px 11px;cursor:pointer;color:var(--noir);text-decoration:none}
+
+#etape-tableau .tuiles{margin:14px 0 18px}
+#etape-tableau .tuile .val.vide{color:var(--gris-bordure2)}
+#etape-tableau .tuile .val.alerte{color:var(--alerte)}
+#etape-tableau .evol{display:block;font-size:12px;color:var(--noir2);margin:2px 0 6px;line-height:1.3}
+#etape-tableau .evol b{font-weight:700}
+#etape-tableau .evol .bon{color:var(--bon)}
+#etape-tableau .evol .mauvais{color:var(--alerte)}
+#etape-tableau .evol .neutre{color:var(--gris-texte2)}
+
+#etape-tableau .carte{border:1px solid var(--gris-bordure);border-radius:14px;padding:22px 24px;margin-bottom:18px}
+#etape-tableau .carte h2{font-size:19px;font-weight:600;margin:0 0 3px;letter-spacing:-.01em}
+#etape-tableau .carte .aide{font-size:12.5px;color:var(--gris-texte);margin:0 0 18px}
+
+#etape-tableau .barre{display:flex;height:46px;border-radius:12px;overflow:hidden;
+  background:var(--gris-nav);position:relative}
+#etape-tableau .seg{display:flex;align-items:center;text-indent:12px;color:#fff;font-size:12.5px;
+  font-weight:600;white-space:nowrap;overflow:hidden}
+#etape-tableau .seg.besoins{background:var(--besoins)}
+#etape-tableau .seg.envies{background:var(--envies)}
+#etape-tableau .seg.epargne{background:var(--epargne)}
+#etape-tableau .seg.frais{background:var(--frais)}
+#etape-tableau .seg.reste{background:var(--reste);color:var(--noir2)}
+#etape-tableau .seg.depasse{background:repeating-linear-gradient(45deg,#e9bba9,#e9bba9 6px,#f4d9cd 6px,#f4d9cd 12px);color:#8a3f1f}
+#etape-tableau .marque{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--noir)}
+#etape-tableau .marque span{position:absolute;top:-17px;left:50%;transform:translateX(-50%);
+  font-size:10.5px;color:var(--noir2);white-space:nowrap}
+#etape-tableau .repere{display:flex;height:12px;border-radius:6px;overflow:hidden;margin-top:8px;opacity:.6}
+#etape-tableau .repere i{display:block}
+#etape-tableau .legende-repere{font-size:12px;color:var(--gris-texte);margin-top:5px}
+#etape-tableau .phrase-cle{font-size:15px;font-weight:600;margin-top:16px}
+#etape-tableau .phrases{margin:12px 0 0;display:grid;gap:7px;font-size:14px}
+#etape-tableau .phrases .p{display:flex;gap:9px;align-items:baseline}
+#etape-tableau .point{width:9px;height:9px;border-radius:50%;flex:0 0 9px;display:inline-block}
+
+/* ── Étape 3 : « Où va l'argent » et évolution mensuelle ─────────────── */
+#etape-tableau .cats-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0;align-items:start}
+@media (max-width:1000px){
+  #etape-tableau .cats-3{grid-template-columns:1fr}
+  #etape-tableau .cat{border-left:none!important;padding-left:0!important}
+}
+#etape-tableau .cat{padding:2px 22px 4px}
+#etape-tableau .cat:first-child{padding-left:0}
+#etape-tableau .cat:last-child{padding-right:0}
+#etape-tableau .cat + .cat{border-left:1px solid var(--gris-bordure)}
+#etape-tableau .cat-tete{display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:center;cursor:pointer}
+#etape-tableau .cat-tete .nom{font-weight:600;font-size:14px}
+#etape-tableau .cat-tete .mont{font-weight:600;font-variant-numeric:tabular-nums}
+#etape-tableau .cat-tete .rail{grid-column:1/-1}
+#etape-tableau .cat-tete .pct{grid-column:1/-1;margin-top:-2px;font-size:12px;color:var(--gris-texte2)}
+#etape-tableau .cat .rail{height:10px;border-radius:5px;background:var(--gris-nav);overflow:hidden}
+#etape-tableau .cat .rail i{display:block;height:100%;border-radius:5px}
+#etape-tableau .subs{display:none;margin:14px 0 2px}
+#etape-tableau .cat.ouvert .subs{display:block}
+#etape-tableau .sub{display:grid;grid-template-columns:1fr auto;gap:5px 10px;align-items:center;padding:6px 0;font-size:13px}
+#etape-tableau .sub .rail{grid-column:1/-1;height:6px}
+#etape-tableau .cat{--c:var(--noir)}
+#etape-tableau .sub .pc-sous{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:500;
+  padding:4px 12px 4px 10px;border-radius:980px;border:1px solid var(--gris-bordure2);background:#fff;color:var(--noir);
+  width:max-content;max-width:100%}
+#etape-tableau .sub .pc-sous::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--c);flex:0 0 9px}
+#etape-tableau .sub .mont{font-variant-numeric:tabular-nums}
+#etape-tableau .vide-sub{font-size:12.5px;color:var(--gris-texte2);padding:6px 0}
+#etape-tableau .nb-ignores{font-size:12.5px;color:var(--gris-texte);border-top:1px solid var(--gris-bordure);
+  margin-top:16px;padding-top:12px}
+
+#etape-tableau svg text{font-family:inherit;fill:var(--gris-texte)}
+#etape-tableau .legende{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--gris-texte);margin-top:8px}
+#etape-tableau .legende span{display:inline-flex;align-items:center;gap:6px}
+#etape-tableau .legende i{width:10px;height:10px;border-radius:3px;display:inline-block}
+#etape-tableau .legende i.ligne-rev{background:none;border-top:2px solid #1d1d1f;height:0;width:16px;border-radius:0}
+#etape-tableau .pied-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
+  border-top:1px solid var(--gris-bordure);margin-top:14px;padding-top:14px}
+#etape-tableau .pied-stats .l{font-size:12px;color:var(--gris-texte2)}
+#etape-tableau .pied-stats .v{font-size:15px;font-weight:600}
+
+/* ── Étape 4 : ce qui revient chaque mois, top 10 ────────────────────── */
+#etape-tableau .trois{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:26px}
+@media (max-width:1000px){#etape-tableau .trois{grid-template-columns:1fr}}
+#etape-tableau .col{border-top:3px solid var(--c);padding-top:10px}
+#etape-tableau .col h3{font-size:16px;font-weight:600;margin:0 0 2px}
+#etape-tableau .aide-col{font-size:12.5px;color:var(--gris-texte);margin:0 0 10px}
+#etape-tableau table{width:100%;border-collapse:collapse;font-size:13px}
+#etape-tableau th{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--gris-texte2);text-align:left;padding:0 0 7px}
+#etape-tableau th.d,#etape-tableau td.d{text-align:right;font-variant-numeric:tabular-nums}
+#etape-tableau td{padding:8px 0;border-top:1px solid var(--gris-bordure);vertical-align:top}
+#etape-tableau td .var{display:block;font-size:11.5px;color:var(--alerte)}
+#etape-tableau td .fin{display:block;font-size:11.5px;color:var(--gris-texte2);font-weight:400}
+#etape-tableau tr.total td{font-weight:600;border-top:1.5px solid var(--noir)}
+#etape-tableau td.sous-bloc{padding-top:14px;border-top:1.5px solid var(--gris-bordure)}
+#etape-tableau .crayon{color:var(--gris-texte2);font-size:12px;border:none;background:none;cursor:pointer}
+#etape-tableau .crayon:hover{color:var(--noir)}
+#etape-tableau .puce{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:8px}
+#etape-tableau .rang{color:var(--gris-texte2);width:26px}
+#etape-tableau .editeur-nom{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+#etape-tableau .editeur-nom input{flex:1;min-width:120px;padding:7px 10px;border:1px solid var(--gris-bordure);
+  border-radius:10px;font:inherit;font-size:13px}
+#etape-tableau .editeur-nom .bt{padding:6px 12px;font-size:12px}
+
+/* ── Étape 5 : revenus attendus, à surveiller ────────────────────────── */
+#etape-tableau .statut{font-size:12px;color:var(--gris-texte)}
+#etape-tableau .statut.ok::before{content:"✓ ";color:var(--bon)}
+#etape-tableau .statut.retard{color:var(--alerte);font-weight:600}
+#etape-tableau .ligne-alertes{margin:-6px 0 14px}
+#etape-tableau .ligne-alertes a{font-size:13px;color:var(--noir2);border:1px solid var(--gris-bordure);
+  border-radius:980px;padding:5px 14px;display:inline-block;cursor:pointer}
+#etape-tableau .ligne-alertes a:hover{background:var(--gris-doux)}
+#etape-tableau .periode-titre{font-weight:400;font-size:14px;color:var(--gris-texte2)}
+#etape-tableau .alerte{display:flex;gap:12px;align-items:center;justify-content:space-between;
+  border-left:3px solid var(--gris-bordure2);padding:9px 14px;margin-bottom:8px;font-size:13.5px}
+#etape-tableau .alerte.forte{border-left-color:var(--alerte)}
+#etape-tableau .plus{font:inherit;font-size:13px;border:none;background:none;color:var(--noir2);
+  text-decoration:underline;cursor:pointer;padding:4px 0}
+
+/* ── Étape 6 : compte, devise, tableau des comptes ───────────────────── */
+#etape-tableau .ligne-compte{margin-top:4px;padding-top:8px}
+#etape-tableau select.pill{padding-right:8px}
+#etape-tableau table.tab-comptes{table-layout:fixed}
+#etape-tableau table.tab-comptes td.d,#etape-tableau table.tab-comptes th.d{white-space:nowrap}
+#etape-tableau table.tab-comptes td .fin{white-space:nowrap}
+#etape-tableau table.tab-comptes td .fin.vs{white-space:normal;font-size:11px;line-height:1.25}
+#etape-tableau .evol-total.bon{color:var(--bon)}
+#etape-tableau .evol-total.mauvais{color:var(--alerte)}
+
+/* Même précaution que pour les Opérations : taille naturelle des champs de cet écran. */
+#etape-tableau select,#etape-tableau input[type=text]{width:auto}
+#etape-tableau .editeur-nom input{flex:1}
+
+#etape-tableau .lien-repere{border:none;background:none;font:inherit;font-size:12px;color:var(--noir2);
+  text-decoration:underline;cursor:pointer;padding:0;margin-left:8px}

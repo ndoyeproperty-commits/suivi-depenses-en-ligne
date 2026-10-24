@@ -1,0 +1,68 @@
+/* ═══════════════════════════════════════════════════════════════
+   ÉCRAN — BILAN & PISTES
+   ⚠️ Tout est préfixé #etape-bilan (règle ④).
+   Reprend la maquette maquettes/bilan-pistes-v3.html.
+   ═══════════════════════════════════════════════════════════════ */
+#etape-bilan{padding-top:34px}
+#etape-bilan .bilan-page{margin:0 auto}
+#etape-bilan h1{font-size:30px;font-weight:600;margin:0 0 4px;letter-spacing:-.015em}
+#etape-bilan .intro{color:var(--gris-texte);margin:0 0 6px}
+#etape-bilan .periode{font-size:12.5px;color:var(--gris-texte);margin:0 0 22px}
+#etape-bilan .encore{display:inline-block;font-size:12.5px;background:var(--gris-nav);border-radius:980px;padding:5px 14px;margin:-8px 0 14px;color:var(--noir2)}
+#etape-bilan .accueil{border:1.5px dashed var(--gris-bordure2);border-radius:16px;text-align:center;padding:34px 20px;margin:18px 0}
+#etape-bilan .accueil h2{font-size:24px;margin:0 0 6px;font-weight:600}
+#etape-bilan .accueil p{color:var(--gris-texte);margin:0 auto 18px;max-width:520px}
+
+#etape-bilan .q-titre{margin:30px 0 12px;display:flex;align-items:center;gap:12px}
+#etape-bilan .q-titre b{font-size:20px;font-weight:600;letter-spacing:-.01em;line-height:1.2}
+#etape-bilan .q-num{flex:0 0 auto;width:28px;height:28px;border-radius:50%;background:var(--noir);color:#fff;font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center}
+#etape-bilan .carte{border:1px solid var(--gris-bordure);border-radius:14px;padding:22px 24px;margin-bottom:18px}
+#etape-bilan .verdict{font-size:18px;font-weight:600;line-height:1.4;margin:0 0 6px;letter-spacing:-.01em}
+#etape-bilan .verdict-sous{font-size:13.5px;color:var(--gris-texte);margin:0}
+#etape-bilan .chiffres{display:flex;gap:34px;flex-wrap:wrap;margin:18px 0 0;padding-top:16px;border-top:1px solid var(--gris-bordure)}
+#etape-bilan .chiffres .lib{font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gris-texte2)}
+#etape-bilan .chiffres .val{font-size:22px;font-weight:600;font-variant-numeric:tabular-nums}
+#etape-bilan .chiffres .sous{font-size:12px;color:var(--gris-texte)}
+#etape-bilan .avert-classement{margin:14px 0 0;font-size:12.5px;color:#8a5a00;background:#fff7e6;border-radius:10px;padding:8px 12px}
+#etape-bilan .lien-b{font:inherit;font-size:12px;border:none;background:none;text-decoration:underline;cursor:pointer;color:inherit;padding:0}
+#etape-bilan .verrou{font-size:12.5px;color:var(--gris-texte);background:var(--gris-doux);border:1px dashed var(--gris-bordure2);border-radius:12px;padding:12px 16px}
+
+#etape-bilan .pills{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 6px}
+#etape-bilan .pill{font:inherit;font-size:12.5px;padding:5px 13px;border-radius:980px;border:1px solid var(--gris-bordure);background:#fff;color:var(--noir);cursor:pointer;width:auto}
+#etape-bilan .pill:hover{background:var(--gris-doux)}
+#etape-bilan .pill.on{background:var(--noir);border-color:var(--noir);color:#fff}
+#etape-bilan .pill:disabled{opacity:.35;cursor:default;pointer-events:none}
+#etape-bilan .legende{font-size:12px;color:var(--gris-texte);margin:0 0 14px}
+
+#etape-bilan .cat{border:1px solid var(--gris-bordure);border-radius:14px;margin-bottom:14px;overflow:hidden}
+#etape-bilan .cat-tete{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:20px;align-items:center;padding:18px 22px}
+#etape-bilan .cat-nom{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:6px}
+#etape-bilan .plein{display:inline-block;font-size:13px;font-weight:600;padding:3px 13px;border-radius:980px;background:var(--c);color:#fff}
+#etape-bilan .verd{font-size:12px;font-weight:600;border:1px solid var(--gris-bordure2);border-radius:980px;padding:2px 10px}
+#etape-bilan .verd.hausse{color:#b3261e;border-color:#e7b9b5}
+#etape-bilan .verd.baisse{color:#3f8a5a;border-color:#b7d9c4}
+#etape-bilan .cat-resume{font-size:13.5px;color:var(--gris-texte);margin:0}
+#etape-bilan .cat-resume b{color:var(--noir)}
+#etape-bilan .rien{font-size:12px;color:var(--gris-texte2);margin:8px 0 0}
+#etape-bilan .bascule{font:inherit;font-size:12px;border:none;background:none;text-decoration:underline;cursor:pointer;color:var(--gris-texte);padding:0;margin-top:8px;width:auto}
+#etape-bilan svg.graph{display:block;width:100%;height:auto}
+#etape-bilan .cat-detail{border-top:1px solid var(--gris-bordure);padding:6px 22px 18px;background:var(--gris-doux)}
+#etape-bilan .evt{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;padding:16px 0;border-top:1px solid var(--gris-bordure)}
+#etape-bilan .evt:first-child{border-top:none}
+#etape-bilan .num{width:24px;height:24px;border-radius:50%;background:var(--noir);color:#fff;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center}
+#etape-bilan .num.gris{background:var(--gris-bordure2);color:var(--noir)}
+#etape-bilan .evt h4{font-size:14.5px;margin:0 0 3px;font-weight:600;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+#etape-bilan .tag{font-size:11px;font-weight:600;border-radius:980px;padding:1px 9px;background:#fff;border:1px solid var(--gris-bordure2);color:var(--gris-texte)}
+#etape-bilan .evt p{margin:0 0 6px;font-size:13.5px;color:var(--gris-texte)}
+#etape-bilan .evt p b{color:var(--noir)}
+#etape-bilan .evt .qui{margin:8px 0 2px}
+#etape-bilan .barre{display:grid;grid-template-columns:150px 1fr 110px;gap:10px;align-items:center;font-size:12.5px;margin:4px 0}
+#etape-bilan .barre .rail{height:8px;border-radius:5px;background:var(--gris-nav);overflow:hidden}
+#etape-bilan .barre .rail i{display:block;height:100%;background:var(--noir2);border-radius:5px}
+#etape-bilan .barre .m{text-align:right;font-variant-numeric:tabular-nums;color:var(--gris-texte)}
+#etape-bilan .piste-box{margin-top:10px;background:#fff;border:1px solid var(--gris-bordure);border-radius:12px;padding:10px 14px;font-size:13px;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+#etape-bilan .piste-box .lbl{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gris-texte2);display:block}
+#etape-bilan .evt-lien{margin-top:6px}
+#etape-bilan .bouton-mini{font:inherit;font-size:12px;border:1px solid var(--gris-bordure);background:#fff;border-radius:980px;padding:4px 12px;cursor:pointer;white-space:nowrap;color:var(--noir);width:auto}
+#etape-bilan .avert{font-size:12px;color:var(--gris-texte2);margin:14px 0 0}
+@media (max-width:760px){#etape-bilan .cat-tete{grid-template-columns:1fr}#etape-bilan .barre{grid-template-columns:100px 1fr 90px}}

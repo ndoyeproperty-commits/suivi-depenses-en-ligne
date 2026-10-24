@@ -1,0 +1,138 @@
+/* ═══════════════════════════════════════════════════════════════════
+   ÉCRAN — CATÉGORIES & RÈGLES (tout est préfixé #etape-regles, règle ④)
+   Reprend la maquette maquettes/categories-regles.html.
+   Les couleurs viennent des catégories (variable --c) ; combinaison A.
+   ═══════════════════════════════════════════════════════════════════ */
+#etape-regles{--alerte:#b3261e}
+#etape-regles .cr-page{padding:26px 0 50px}
+#etape-regles h1{font-size:30px;font-weight:600;margin:0 0 4px;letter-spacing:-.015em}
+#etape-regles .intro{color:var(--gris-texte);margin:0 0 20px;font-size:14px}
+#etape-regles .onglets-cr{display:flex;gap:6px;justify-content:center;margin-bottom:22px}
+#etape-regles .pill{font:inherit;font-size:13px;padding:6px 16px;border-radius:980px;border:1px solid var(--gris-bordure);
+  background:#fff;color:var(--noir);cursor:pointer}
+#etape-regles .pill:hover{background:var(--gris-doux)}
+#etape-regles .pill.on{background:var(--noir);border-color:var(--noir);color:#fff}
+#etape-regles .pill b{font-weight:600;opacity:.8;margin-left:4px}
+#etape-regles .lien-cr{font:inherit;font-size:12.5px;border:none;background:none;text-decoration:underline;cursor:pointer;color:var(--noir2);padding:0}
+#etape-regles select,#etape-regles input[type=text],#etape-regles input[type=search]{width:auto;transition:none}
+#etape-regles .bt.danger{color:var(--alerte)}
+#etape-regles .note-cr{background:var(--gris-doux);border:1px solid var(--gris-bordure);border-radius:12px;padding:12px 16px;
+  font-size:13px;color:var(--gris-texte);margin-bottom:18px}
+
+/* ── Catégories ─────────────────────────────────────────── */
+#etape-regles .grande{border:1px solid var(--gris-bordure);border-radius:14px;margin-bottom:14px;overflow:hidden}
+#etape-regles .grande-tete{display:flex;gap:14px;align-items:center;padding:16px 20px;cursor:pointer}
+#etape-regles .grande-tete .barre{width:6px;align-self:stretch;border-radius:3px;background:var(--c)}
+#etape-regles .grande-tete h2{font-size:19px;margin:0;font-weight:600}
+#etape-regles .grande-tete .desc{font-size:12.5px;color:var(--gris-texte);margin-top:1px}
+#etape-regles .grande-tete .total{margin-left:auto;text-align:right;font-variant-numeric:tabular-nums}
+#etape-regles .grande-tete .total b{font-size:15px}
+#etape-regles .grande-tete .fleche{color:var(--gris-texte2);font-size:12px;transition:.15s}
+#etape-regles .grande.ferme .fleche{transform:rotate(-90deg)}
+#etape-regles .corps{border-top:1px solid var(--gris-bordure)}
+#etape-regles .grande.ferme .corps{display:none}
+#etape-regles .sous{display:grid;grid-template-columns:minmax(0,1fr) 140px 64px;gap:10px;align-items:center;
+  padding:9px 20px;border-top:1px solid var(--gris-bordure)}
+#etape-regles .sous:first-child{border-top:none}
+#etape-regles .sous.tete{background:var(--gris-doux);font-size:11px;font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--gris-texte2);padding:8px 20px}
+#etape-regles .sous .d{text-align:right;font-variant-numeric:tabular-nums}
+#etape-regles .pc-sous{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:500;
+  padding:4px 12px 4px 10px;border-radius:980px;border:1px solid var(--gris-bordure2);background:#fff;color:var(--noir);max-width:100%}
+#etape-regles .pc-sous::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--c);flex:0 0 9px}
+#etape-regles .pc-sous.perso::after{content:"à vous";font-weight:400;font-size:10.5px;color:var(--gris-texte2);
+  border-left:1px solid var(--gris-bordure2);padding-left:7px}
+#etape-regles .pc-sous.sans{border-style:dashed;color:var(--gris-texte)}
+#etape-regles .ico{border:none;background:none;cursor:pointer;font-size:14px;color:var(--gris-texte2);padding:4px 7px;border-radius:8px}
+#etape-regles .ico:hover{background:var(--gris-nav);color:var(--noir)}
+#etape-regles .edition{padding:14px 20px;background:var(--gris-doux);border-top:1px solid var(--gris-bordure)}
+#etape-regles .champs{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}
+#etape-regles .champs label{font-size:11.5px;color:var(--gris-texte2);display:flex;flex-direction:column;gap:3px}
+#etape-regles .champs input,#etape-regles .champs select{font:inherit;font-size:13.5px;padding:7px 10px;
+  border:1px solid var(--gris-bordure);border-radius:10px;background:#fff;color:var(--noir)}
+#etape-regles .aide-edit{font-size:12.5px;color:var(--gris-texte);margin:10px 0}
+#etape-regles .mini-titre{font-size:11.5px;color:var(--gris-texte2);margin-bottom:6px}
+#etape-regles .chips-fam{display:flex;gap:8px;flex-wrap:wrap}
+#etape-regles .ajout-sous{display:flex;gap:8px;padding:12px 20px;border-top:1px solid var(--gris-bordure);align-items:center}
+#etape-regles .ajout-sous input{flex:1;max-width:320px}
+#etape-regles .masquees{font-size:13px;color:var(--gris-texte)}
+
+/* sélecteur de couleur */
+#etape-regles .selecteur{background:#fff;border:1px solid var(--gris-bordure);border-radius:12px;padding:12px 14px;min-width:340px;max-width:460px}
+#etape-regles .pal-titre{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gris-texte2);margin:8px 0 6px}
+#etape-regles .pal-titre:first-child{margin-top:0}
+#etape-regles .palette{display:flex;gap:6px;flex-wrap:wrap}
+#etape-regles .palette i{width:24px;height:24px;border-radius:50%;display:inline-block;cursor:pointer;border:2px solid #fff;box-shadow:0 0 0 1px var(--gris-bordure2)}
+#etape-regles .palette i:hover{transform:scale(1.12)}
+#etape-regles .palette i.on{box-shadow:0 0 0 2.5px var(--noir)}
+#etape-regles .degrade{margin-top:10px;display:grid;gap:10px}
+#etape-regles .degrade label{font-size:11.5px;color:var(--gris-texte2);display:grid;gap:4px}
+#etape-regles .degrade input[type=range]{-webkit-appearance:none;appearance:none;height:14px;border-radius:7px;padding:0;
+  border:1px solid var(--gris-bordure);cursor:pointer;width:100%}
+#etape-regles .degrade input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;
+  background:#fff;border:2px solid var(--noir);box-shadow:0 1px 4px rgba(0,0,0,.3)}
+#etape-regles .degrade input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:#fff;border:2px solid var(--noir)}
+#etape-regles .r-teinte{background:linear-gradient(to right,#f00,#ff0,#0f0,#0ff,#00f,#f0f,#f00)}
+#etape-regles .apercu-couleur{display:flex;gap:12px;align-items:center}
+#etape-regles .apercu-couleur input{width:100px}
+
+/* ── Règles ─────────────────────────────────────────────── */
+#etape-regles .barre-regles{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+#etape-regles .barre-regles input{flex:1;min-width:220px;border:1px solid var(--gris-bordure);border-radius:980px;
+  padding:9px 14px;font:inherit;font-size:14px}
+#etape-regles .puces{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+#etape-regles .puce-f{font:inherit;font-size:12.5px;padding:5px 12px;border-radius:980px;border:1px solid var(--gris-bordure);
+  background:#fff;cursor:pointer;display:inline-flex;gap:6px;color:var(--noir)}
+#etape-regles .puce-f.on{background:var(--noir);color:#fff;border-color:var(--noir)}
+#etape-regles .liste{border:1px solid var(--gris-bordure);border-radius:14px;overflow:hidden}
+#etape-regles .regle{display:grid;grid-template-columns:minmax(0,1fr) 240px 110px 84px;gap:12px;align-items:center;
+  padding:12px 18px;border-top:1px solid var(--gris-bordure)}
+#etape-regles .regle.tete{background:var(--gris-doux);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--gris-texte2);padding:9px 18px;border-top:none}
+#etape-regles .si{font-size:13.5px}
+#etape-regles .si b{font-weight:600}
+#etape-regles .si .ex{font-size:11.5px;color:var(--gris-texte2);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#etape-regles .badge{display:inline-block;font-size:10.5px;border:1px solid var(--gris-bordure2);border-radius:980px;padding:0 7px;
+  margin-left:6px;color:var(--gris-texte);vertical-align:1px}
+#etape-regles .conflit{font-size:11.5px;color:var(--alerte);margin-top:3px}
+#etape-regles .conflit.ok{color:var(--gris-texte)}
+/* La cible d'une règle : même pastille que les sous-catégories (blanche, point de la couleur de la catégorie). */
+#etape-regles .cible{position:relative;display:inline-flex;align-items:center;max-width:100%}
+#etape-regles .cible select{appearance:none;-webkit-appearance:none;font-size:12.5px;font-weight:500;border-radius:980px;
+  padding:4px 26px 4px 28px;border:1px solid var(--gris-bordure2);color:var(--noir);background:#fff;cursor:pointer;
+  max-width:100%;text-overflow:ellipsis}
+#etape-regles .cible::before{content:"";position:absolute;left:12px;width:9px;height:9px;border-radius:50%;
+  background:var(--c);pointer-events:none;z-index:1}
+#etape-regles .cible::after{content:"▾";position:absolute;right:10px;font-size:10px;pointer-events:none;color:var(--gris-texte2)}
+#etape-regles .regle .nb{font-variant-numeric:tabular-nums;font-size:13px}
+#etape-regles .regle .nb small{display:block;font-size:11.5px}
+#etape-regles .alerte-txt{color:var(--alerte)}
+#etape-regles .regle .acts{display:flex;justify-content:flex-end}
+#etape-regles .vide-cr{padding:34px 20px;text-align:center;color:var(--gris-texte)}
+#etape-regles .creer{border:1px solid var(--gris-bordure);border-radius:14px;padding:18px 20px;margin-bottom:14px;background:var(--gris-doux)}
+#etape-regles .creer h3{margin:0 0 12px;font-size:16px}
+#etape-regles .apercu{margin-top:12px;font-size:13px;color:var(--gris-texte);background:#fff;border:1px solid var(--gris-bordure);
+  border-radius:10px;padding:10px 14px}
+#etape-regles .apercu b{color:var(--noir)}
+#etape-regles .apercu ul{margin:6px 0 0;padding-left:18px;font-size:12px;color:var(--gris-texte2)}
+
+/* ── Annuler, fenêtre de confirmation ───────────────────── */
+#etape-regles .toast{position:fixed;left:18px;bottom:18px;z-index:40;background:var(--noir);color:#fff;border-radius:14px;
+  padding:10px 12px 10px 16px;display:none;gap:12px;align-items:center;font-size:13px;box-shadow:0 8px 30px rgba(0,0,0,.25);max-width:calc(100vw - 36px)}
+#etape-regles .toast.visible{display:flex}
+#etape-regles .toast button{font:inherit;font-size:12.5px;border:1px solid rgba(255,255,255,.4);background:none;color:#fff;
+  border-radius:980px;padding:4px 12px;cursor:pointer;white-space:nowrap}
+#etape-regles .modale-fond{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:50;display:none;align-items:center;justify-content:center;padding:16px}
+#etape-regles .modale-fond.visible{display:flex}
+#etape-regles .modale{background:#fff;border-radius:16px;padding:24px;max-width:480px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+#etape-regles .modale h3{margin:0 0 8px;font-size:18px}
+#etape-regles .modale p{color:var(--gris-texte);margin:0 0 14px}
+#etape-regles .modale .petit{font-size:12.5px}
+#etape-regles .modale .champs{margin-bottom:16px}
+#etape-regles .modale .pied{display:flex;gap:8px;justify-content:flex-end}
+@media (max-width:760px){
+  #etape-regles .sous{grid-template-columns:minmax(0,1fr) 60px}
+  #etape-regles .sous>:nth-child(2){display:none}
+  #etape-regles .regle{grid-template-columns:1fr;gap:6px}
+  #etape-regles .regle.tete{display:none}
+}

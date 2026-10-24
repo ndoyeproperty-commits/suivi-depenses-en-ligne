@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suivi de dépenses</title>
+<!-- Le ?v=... force le navigateur à recharger les fichiers : à changer à chaque modification. -->
+<link rel="stylesheet" href="css/style.css?v=20261021n">
+<link rel="stylesheet" href="css/etape-enveloppes.css?v=20261021n">
+<link rel="stylesheet" href="css/etape-import.css?v=20261021n">
+<link rel="stylesheet" href="css/operations.css?v=20261021n">
+<link rel="stylesheet" href="css/categories-regles.css?v=20261021n">
+<link rel="stylesheet" href="css/reglages.css?v=20261021n">
+<link rel="stylesheet" href="css/tableau-de-bord.css?v=20261021n">
+<link rel="stylesheet" href="css/bilan.css?v=20261021n">
+<link rel="stylesheet" href="css/projets.css?v=20261021n">
+<link rel="stylesheet" href="css/comparer.css?v=20261021n">
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">Suivi de dépenses</div>
+    <div class="menu" id="menu-principal">
+      <a href="#" data-vue="tableau">Tableau de bord</a>
+      <a href="#" data-vue="comparer">Comparer</a>
+      <a href="#" data-vue="bilan">Bilan &amp; pistes</a>
+      <a href="#" data-vue="projets">Projets</a>
+      <a href="#" data-vue="operations">Opérations</a>
+      <a href="#" data-vue="regles">Catégories &amp; règles</a>
+    </div>
+    <a class="reglages" href="#" data-vue="reglages">⚙ Réglages</a>
+    <a class="cta" href="#" data-vue="import">Importer les relevés</a>
+  </div>
+</header>
+
+<main>
+
+  <div class="tete">
+    <h1 id="titre-principal">Parlez-moi de vous</h1>
+    <p class="st" id="sous-titre-principal">Quelques informations pour comprendre vos relevés dès le
+      premier import. Rien n'est définitif.</p>
+  </div>
+
+  <div class="prog">
+    <div class="e"><span class="n">1</span> Les personnes</div>
+    <div class="e"><span class="n">2</span> Les comptes</div>
+    <div class="e"><span class="n">3</span> Le foyer</div>
+    <div class="e"><span class="n">4</span> Les habitudes</div>
+    <div class="e"><span class="n">5</span> Catégories</div>
+  </div>
+
+  <!-- ══════════════ ① LES PERSONNES ══════════════ -->
+  <div id="etape-personnes" class="etape-conteneur">
+    <div class="etape">
+      <div class="num">Étape 1</div>
+      <h2>Qui est concerné ?</h2>
+      <p class="desc">Chaque personne aura ses comptes, ses revenus et sa part
+        du budget.</p>
+
+      <div id="liste-personnes"></div>
+
+      <button class="aj" data-action="ajouter-personne">＋ Ajouter une personne</button>
+
+      <div class="ch" style="margin-top:22px">
+        <div class="lb">Comment vivez-vous ?</div>
+        <div id="bloc-mode-vie"></div>
+      </div>
+
+      <div class="ch">
+        <div class="lb">Comment répartir les dépenses ?</div>
+        <div id="bloc-repartition"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ ② LES COMPTES ══════════════ -->
+  <div id="etape-comptes" class="etape-conteneur" hidden>
+    <div class="etape">
+      <div class="num">Étape 2</div>
+      <h2>Quels comptes suivre ?</h2>
+      <p class="desc">Comptes courants, livrets, cartes — tout ce qui apparaît
+        sur vos relevés.</p>
+
+      <div id="liste-comptes"></div>
+
+      <button class="aj" data-action="ajouter-compte">＋ Ajouter un compte</button>
+
+      <div id="bloc-taux"></div>
+      <div class="aide" style="text-align:center;margin-top:12px">
+        Le numéro de compte n'est pas demandé — il sera détecté au premier
+        import.</div>
+    </div>
+  </div>
+
+  <!-- ══════════════ ③ LE FOYER ══════════════ -->
+  <div id="etape-foyer" class="etape-conteneur" hidden>
+    <div class="etape">
+      <div class="num">Étape 3</div>
+      <h2>Votre foyer</h2>
+      <p class="desc">Ces réponses évitent d'oublier des dépenses importantes.</p>
+
+      <div class="l2">
+        <div class="ch">
+          <div class="lb">Habitation</div>
+          <div id="bloc-habitation"></div>
+        </div>
+        <div class="ch">
+          <div class="lb">Nombre d'enfants</div>
+          <input type="number" placeholder="0" id="champ-enfants" data-champ="nombreEnfants">
+        </div>
+      </div>
+
+      <div id="detail-habitation"></div>
+
+      <div class="ch">
+        <div class="lb">Avez-vous…</div>
+        <div class="cs" id="cases-foyer"></div>
+      </div>
+
+      <div id="panneaux-foyer"></div>
+    </div>
+  </div>
+
+  <!-- ══════════════ ④ LES HABITUDES ══════════════ -->
+  <div id="etape-habitudes" class="etape-conteneur" hidden>
+    <div class="etape">
+      <div class="num">Étape 4</div>
+      <h2>Vos habitudes</h2>
+      <p class="desc">Pour reconnaître vos transactions dès le premier import.</p>
+
+      <div class="ch">
+        <div class="lb">Abonnements que vous connaissez</div>
+        <div class="cs" id="cases-abonnements"></div>
+      </div>
+
+      <div id="details-abonnements"></div>
+
+      <div class="ch">
+        <div class="lb">Autres abonnements <span class="fa">facultatif</span></div>
+        <div id="liste-abonnements-personnalises"></div>
+        <button class="aj" data-action="ajouter-abonnement-personnalise">＋ Ajouter un abonnement</button>
+      </div>
+
+      <div class="ch">
+        <div class="lb">Vos enseignes habituelles</div>
+        <input type="text" placeholder="Ex. Carrefour, Monoprix, la boulangerie du coin…"
+               id="champ-enseignes" data-champ="enseignes">
+      </div>
+
+      <div class="ch">
+        <div class="lb">Dépenses régulières à surveiller</div>
+        <input type="text" placeholder="Ex. loyer, mutuelle, énergie…"
+               id="champ-depenses-regulieres" data-champ="depensesRegulieres">
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ ⑤ LES CATÉGORIES ══════════════ -->
+  <div id="etape-enveloppes" class="etape-conteneur" hidden>
+    <div class="etape">
+      <div class="num">Étape 5</div>
+      <h2>Vos catégories</h2>
+      <p class="desc">Tout ce que vous dépensez se range dans trois grandes catégories.
+        Gardez les sous-catégories qui vous parlent, retirez les autres, ajoutez les vôtres.</p>
+      <div id="grandes-categories"></div>
+
+      <div class="sous-titre">Et aussi</div>
+      <div id="autres-categories"></div>
+
+      <div class="note">Un doute sur le rangement d'une sous-catégorie ? Rien n'est définitif :
+        vous pourrez la déplacer d'une catégorie à l'autre, la renommer ou changer sa couleur
+        à tout moment (icône ✎).</div>
+    </div>
+  </div>
+
+  <!-- ══════════════ TABLEAU DE BORD ══════════════ -->
+  <div id="etape-tableau" class="etape-conteneur" hidden></div>
+
+  <!-- ══════════════ OPÉRATIONS ══════════════ -->
+  <div id="etape-operations" class="etape-conteneur" hidden></div>
+
+  <!-- ══════════════ RÉGLAGES ══════════════ -->
+  <div id="etape-reglages" class="etape-conteneur" hidden></div>
+
+  <!-- ══════════════ CATÉGORIES & RÈGLES ══════════════ -->
+  <div id="etape-regles" class="etape-conteneur" hidden></div>
+
+  <!-- ══════════════ PAGES PAS ENCORE CONSTRUITES ══════════════ -->
+  <div id="etape-bilan" class="etape-conteneur" hidden></div>
+  <div id="etape-projets" class="etape-conteneur" hidden></div>
+  <div id="etape-comparer" class="etape-conteneur" hidden></div>
+  <div id="etape-bientot" class="etape-conteneur" hidden></div>
+
+  <!-- ══════════════ L'IMPORT (depuis le bouton « Importer les relevés ») ══════════════ -->
+  <div id="etape-import" class="etape-conteneur" hidden>
+    <div class="etape">
+      <button class="bt s" data-vue="tableau" style="margin-bottom:18px">← Retour au tableau de bord</button>
+      <h2>Importez vos relevés</h2>
+      <p class="desc">Vos fichiers ne quittent jamais votre ordinateur.</p>
+
+      <div class="ch choix-compte">
+        <div class="lb">Ce relevé concerne quel compte ?</div>
+        <select id="choix-compte-import"></select>
+        <div class="aide" id="aide-compte-import"></div>
+      </div>
+
+      <div class="zone-depot" id="zone-depot">
+        <span class="icone">📄</span>
+        <div class="principal">Déposez vos relevés ici, ou cliquez pour choisir un fichier</div>
+        <div class="secondaire">Formats acceptés : PDF, CSV</div>
+        <input type="file" id="champ-fichier" accept=".pdf,.csv" hidden>
+      </div>
+      <p class="aide" id="statut-import" style="text-align:center;margin-top:10px"></p>
+
+      <div class="resultat" id="resultat-import"></div>
+    </div>
+
+    <div class="etape">
+<div id="liste-transactions"></div>
+    </div>
+  </div>
+
+  <div class="bas">
+    <button class="bt s" id="btn-retour">← Retour</button>
+    <span class="compte" id="compteur"></span>
+    <div style="display:flex;gap:8px;align-items:center">
+      <button class="bt lien" id="btn-passer">Passer cette étape</button>
+      <button class="bt p" id="btn-continuer">Continuer →</button>
+    </div>
+  </div>
+  <p class="aide" id="note-etape" style="text-align:center;margin-top:14px" hidden>
+    L'écran suivant n'est pas encore construit — vos réponses sont déjà
+    sauvegardées automatiquement dans ce navigateur.
+  </p>
+
+</main>
+
+<!-- pdf.js : lit les relevés PDF entièrement dans le navigateur (voir CLAUDE.md §3).
+     La bibliothèque est copiée dans le dossier « vendor » : aucune connexion à un site extérieur. -->
+<script src="vendor/pdf.min.js"></script>
+<script src="js/stockage.js?v=20261021n"></script>
+<script src="js/aides.js?v=20261021n"></script>
+<script src="js/regles.js?v=20261021n"></script>
+<script src="js/etape-personnes.js?v=20261021n"></script>
+<script src="js/devises.js?v=20261021n"></script>
+<script src="js/etape-comptes.js?v=20261021n"></script>
+<script src="js/etape-foyer.js?v=20261021n"></script>
+<script src="js/etape-habitudes.js?v=20261021n"></script>
+<script src="js/etape-enveloppes.js?v=20261021n"></script>
+<script src="js/pdf-lecteur.js?v=20261021n"></script>
+<script src="js/import-parseur.js?v=20261021n"></script>
+<script src="js/etape-import.js?v=20261021n"></script>
+<script src="js/tableau-calculs.js?v=20261021n"></script>
+<script src="js/tableau-graphiques.js?v=20261021n"></script>
+<script src="js/tableau-listes.js?v=20261021n"></script>
+<script src="js/tableau-surveillance.js?v=20261021n"></script>
+<script src="js/operations.js?v=20261021n"></script>
+<script src="js/categories-regles.js?v=20261021n"></script>
+<script src="js/reglages.js?v=20261021n"></script>
+<script src="js/tableau-de-bord.js?v=20261021n"></script>
+<script src="js/bilan-calculs.js?v=20261021n"></script>
+<script src="js/bilan.js?v=20261021n"></script>
+<script src="js/projets.js?v=20261021n"></script>
+<script src="js/comparer.js?v=20261021n"></script>
+<script src="js/app.js?v=20261021n"></script>
+</body>
+</html>

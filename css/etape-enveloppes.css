@@ -1,0 +1,66 @@
+/* ═══════════════════════════════════════════════════════════════════
+   ÉCRAN ⑤ — LES CATÉGORIES (Besoins, Envies, Épargne…)
+   ⚠️ Tout ici est préfixé #etape-enveloppes (règle ④ de CLAUDE.md).
+   La seule couleur de l'écran : le point de couleur de chaque sous-catégorie.
+   ═══════════════════════════════════════════════════════════════════ */
+
+#etape-enveloppes .grande{border:1px solid var(--gris-bordure);border-radius:14px;
+  padding:24px 24px 20px;margin-bottom:18px}
+#etape-enveloppes .petite{border:1px solid var(--gris-bordure);border-radius:14px;
+  padding:18px 24px 16px;margin-bottom:14px}
+#etape-enveloppes .entete{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:4px}
+#etape-enveloppes .grande h2{font-size:24px;font-weight:600;margin:0;letter-spacing:-.01em}
+#etape-enveloppes .petite h2{font-size:15px;font-weight:600;margin:0}
+#etape-enveloppes .compte{font-size:12.5px;color:var(--gris-texte2)}
+#etape-enveloppes .desc{font-size:14px;color:var(--gris-texte);margin:0 0 16px}
+#etape-enveloppes .petite .desc{font-size:12.5px;margin-bottom:12px}
+#etape-enveloppes .sous-titre{font-size:12px;font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--gris-texte2);margin:34px 0 12px}
+
+/* ── Les pastilles de sous-catégories (combinaison A) : pastille blanche, point de la couleur de
+   leur catégorie. Retenue = point plein et bord à la couleur de la catégorie ; non retenue = grisée. ── */
+#etape-enveloppes .past{display:flex;flex-wrap:wrap;gap:9px;align-items:center}
+#etape-enveloppes .pc{
+  font-size:13px;padding:7px 15px 7px 12px;border-radius:980px;
+  border:1px solid var(--gris-bordure2);background:#fff;color:var(--gris-texte2);
+  cursor:pointer;transition:.18s;font-family:inherit;font-weight:500;
+  display:inline-flex;align-items:center;gap:8px;
+}
+#etape-enveloppes .pc::before{content:"";width:9px;height:9px;border-radius:50%;
+  background:transparent;border:1.5px solid var(--gris-bordure2);transition:.18s;flex:0 0 9px}
+#etape-enveloppes .pc:hover{background:var(--gris-doux)}
+#etape-enveloppes .pc.on{border-color:var(--p);color:var(--noir);font-weight:600}
+#etape-enveloppes .pc.on::before{background:var(--p);border-color:var(--p)}
+
+#etape-enveloppes .pc-groupe{display:inline-flex;align-items:center;gap:3px}
+#etape-enveloppes .pc-modifier{border:none;background:none;cursor:pointer;
+  font-size:13px;color:var(--gris-texte);padding:4px;transition:.15s}
+#etape-enveloppes .pc-modifier:hover{color:var(--noir)}
+
+/* ── Ajouter sa propre sous-catégorie ─────────────────────────────── */
+#etape-enveloppes .ajout-ligne{display:flex;gap:8px;margin-top:16px;padding-top:16px;
+  border-top:1px solid var(--gris-bordure)}
+#etape-enveloppes .petite .ajout-ligne{margin-top:12px;padding-top:12px}
+#etape-enveloppes .ajout-ligne input{flex:1;max-width:340px;padding:10px 14px;
+  border:1px solid var(--gris-bordure);border-radius:10px;font:inherit;font-size:14px}
+
+/* ── Édition d'une sous-catégorie (nom, catégorie) ───────── */
+#etape-enveloppes .pc-edit{display:inline-flex;align-items:center;gap:6px;
+  border:1.5px dashed var(--gris-bordure2);border-radius:980px;
+  padding:5px 8px 5px 5px;background:#fff}
+#etape-enveloppes .pc-edit input[type=color]{width:22px;height:22px;padding:0;
+  border:none;border-radius:50%;cursor:pointer;background:none}
+#etape-enveloppes .pc-edit input[type=text]{border:none;font:inherit;
+  font-size:13px;width:120px;padding:2px 0}
+#etape-enveloppes .pc-edit input[type=text]:focus{outline:none}
+#etape-enveloppes .pc-edit select{border:1px solid var(--gris-bordure);
+  border-radius:8px;font:inherit;font-size:12px;padding:3px 5px;
+  background:#fff;color:var(--noir2);width:auto;max-width:150px}
+#etape-enveloppes .pc-edit button{border:none;background:none;cursor:pointer;
+  font-size:13px;padding:2px 4px;line-height:1}
+#etape-enveloppes .pc-edit .valider{color:var(--noir);font-weight:700}
+#etape-enveloppes .pc-edit .effacer{color:var(--gris-texte2)}
+#etape-enveloppes .pc-edit .effacer:hover{color:var(--noir)}
+
+#etape-enveloppes .note{background:var(--gris-doux);border:1px solid var(--gris-bordure);
+  border-radius:12px;padding:14px 17px;font-size:13px;color:var(--gris-texte);margin-top:26px}
